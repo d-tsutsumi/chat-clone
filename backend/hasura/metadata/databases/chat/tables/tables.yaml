@@ -1,0 +1,7 @@
+- "!include public_migrations.yaml"
+- "!include tsutsumi_chat_messages.yaml"
+- "!include tsutsumi_chat_organization.yaml"
+- "!include tsutsumi_chat_rooms.yaml"
+- "!include tsutsumi_chat_user.yaml"
+- "!include tsutsumi_chat_user_join_tables_rooms.yaml"
+- "!include tsutsumi_chat_user_role.yaml"

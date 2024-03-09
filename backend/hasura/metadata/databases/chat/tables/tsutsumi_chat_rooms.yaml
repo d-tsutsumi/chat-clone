@@ -1,0 +1,22 @@
+table:
+  name: rooms
+  schema: tsutsumi_chat
+object_relationships:
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+array_relationships:
+  - name: messages
+    using:
+      foreign_key_constraint_on:
+        column: room_id
+        table:
+          name: messages
+          schema: tsutsumi_chat
+  - name: user_join_tables_rooms
+    using:
+      foreign_key_constraint_on:
+        column: roomsId
+        table:
+          name: user_join_tables_rooms
+          schema: tsutsumi_chat

@@ -1,0 +1,7 @@
+query getRoomsByUserId($userId: uuid!) {
+  tsutsumi_chat_user_join_tables_rooms(where: { userId: { _eq: $userId } }) {
+    room {
+      name
+      id
+    }
+  }

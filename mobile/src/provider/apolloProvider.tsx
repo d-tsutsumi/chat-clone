@@ -3,7 +3,7 @@ import config from '@/shared/lib/envConfig';
 import { ReactNode } from 'react';
 
 const apolloClient = new ApolloClient({
-  uri: config.graphqlEndPoint,
+  uri: "http://192.168.3.2:8080/v1/graphql",
   cache: new InMemoryCache(),
 });
 

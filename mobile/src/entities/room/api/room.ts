@@ -1,8 +1,10 @@
-import { gql } from '@/types/__generated__/client';
-import { useQuery } from '@apollo/client';
 import { useMemo } from 'react';
+import { useQuery } from '@apollo/client';
+
+import { gql } from '@/types/__generated__/client';
+
 const query = gql(
-  'query getRoomsByUserId($userId: uuid!) {\n  tsutsumi_chat_user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}',
+  'query getRoomsByUserId($userId: uuid!) {\n  user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}',
 );
 
 export function useRoomsByUserId(userId: string) {
@@ -12,7 +14,7 @@ export function useRoomsByUserId(userId: string) {
   });
 
   const rooms = useMemo(
-    () => data?.tsutsumi_chat_user_join_tables_rooms.map((room) => ({ ...room.room })),
+    () => data?.user_join_tables_rooms.map((room) => ({ ...room.room })),
     [data],
   );
   return { rooms, error };

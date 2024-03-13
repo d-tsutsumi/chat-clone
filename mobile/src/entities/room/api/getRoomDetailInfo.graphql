@@ -1,0 +1,18 @@
+query getRoomDetailInfo($roomId: uuid!) {
+  rooms_by_pk(id: $roomId) {
+    create_at
+    id
+    name
+  }
+  user_join_tables_rooms(where: { roomsId: { _eq: $roomId } }) {
+    user {
+      user_name
+      id
+    }
+  }
+  user_join_tables_rooms_aggregate(where: { roomsId: { _eq: $roomId } }) {
+    aggregate {
+      count
+    }
+  }
+}

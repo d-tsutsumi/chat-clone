@@ -1,5 +1,5 @@
-import { useRoomsByUserId } from '@/entities/room/api/room';
 import { FlatList } from 'react-native';
+import { useRoomsByUserId } from '@/entities/room/api/room';
 
 import RoomListItem from './roomListItem';
 import { LoadingSpinner } from '@/shared/ui';

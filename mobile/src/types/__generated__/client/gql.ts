@@ -13,7 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "query getRoomsByUserId($userId: uuid!) {\n  tsutsumi_chat_user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}": types.GetRoomsByUserIdDocument,
+    "query getRoomDetailInfo($roomId: uuid!) {\n  rooms_by_pk(id: $roomId) {\n    create_at\n    id\n    name\n  }\n  user_join_tables_rooms(where: {roomsId: {_eq: $roomId}}) {\n    user {\n      user_name\n      id\n    }\n  }\n  user_join_tables_rooms_aggregate(where: {roomsId: {_eq: $roomId}}) {\n    aggregate {\n      count\n    }\n  }\n}": types.GetRoomDetailInfoDocument,
+    "query getRoomsByUserId($userId: uuid!) {\n  user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}": types.GetRoomsByUserIdDocument,
 };
 
 /**
@@ -33,7 +34,11 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "query getRoomsByUserId($userId: uuid!) {\n  tsutsumi_chat_user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}"): (typeof documents)["query getRoomsByUserId($userId: uuid!) {\n  tsutsumi_chat_user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}"];
+export function gql(source: "query getRoomDetailInfo($roomId: uuid!) {\n  rooms_by_pk(id: $roomId) {\n    create_at\n    id\n    name\n  }\n  user_join_tables_rooms(where: {roomsId: {_eq: $roomId}}) {\n    user {\n      user_name\n      id\n    }\n  }\n  user_join_tables_rooms_aggregate(where: {roomsId: {_eq: $roomId}}) {\n    aggregate {\n      count\n    }\n  }\n}"): (typeof documents)["query getRoomDetailInfo($roomId: uuid!) {\n  rooms_by_pk(id: $roomId) {\n    create_at\n    id\n    name\n  }\n  user_join_tables_rooms(where: {roomsId: {_eq: $roomId}}) {\n    user {\n      user_name\n      id\n    }\n  }\n  user_join_tables_rooms_aggregate(where: {roomsId: {_eq: $roomId}}) {\n    aggregate {\n      count\n    }\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "query getRoomsByUserId($userId: uuid!) {\n  user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}"): (typeof documents)["query getRoomsByUserId($userId: uuid!) {\n  user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

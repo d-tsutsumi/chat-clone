@@ -1,7 +1,7 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: 'http://192.168.3.2:8080/v1/graphql',
+  schema: 'http://127.0.0.1:8080/v1/graphql',
   documents: ['src/**/*.graphql'],
   generates: {
     'src/types/__generated__/client/': {

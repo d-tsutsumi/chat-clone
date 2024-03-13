@@ -1,11 +1,10 @@
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
 
 import { GetRoomsByUserIdQuery } from '@/types/__generated__/client/graphql';
-import { AntDesign } from '@expo/vector-icons';
 import { HeadingText, Divider } from '@/shared/ui';
-
+import { Icon } from '@/shared/ui/icon';
 type Props = {
-  room: GetRoomsByUserIdQuery['tsutsumi_chat_user_join_tables_rooms'][0]['room'];
+  room: GetRoomsByUserIdQuery["user_join_tables_rooms"][0]['room'];
 };
 
 export default function RoomListItem({ room }: Props) {
@@ -14,7 +13,7 @@ export default function RoomListItem({ room }: Props) {
       <TouchableOpacity activeOpacity={0.4} style={styles.listContainer}>
         <HeadingText size="small">{room.name}</HeadingText>
         <View style={styles.iconLayout}>
-          <AntDesign name="arrowright" size={24} color="black" />
+          <Icon size={24} name="arrowright" />
         </View>
       </TouchableOpacity>
       <Divider />

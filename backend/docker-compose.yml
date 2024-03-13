@@ -16,9 +16,9 @@ services:
     restart: always
     environment:
       ## postgres database to store Hasura metadata
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/chat
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432
       ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
-      PG_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/chat
+      PG_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432
       ## enable the console served by server
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
       ## enable debugging mode. It is recommended to disable this in production
@@ -48,5 +48,14 @@ services:
       timeout: 10s
       retries: 5
       start_period: 5s
+  nest:
+    build:
+      context: .
+      dockerfile: ./nest/DockerFile
+    tty: true
+    volumes:
+      - ./nest/:/home/node/app
+    ports:
+      - "3005:3000"
 volumes:
   db_data:

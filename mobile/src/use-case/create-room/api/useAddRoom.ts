@@ -30,10 +30,9 @@ const cacheUpdate = (
       };
     },
   );
-export { CreateRoomDto } from '@/types/__generated__/client/graphql';
 
 export default function useAddRoom() {
-  const [addRoomMutation, { data, loading, error }] = useMutation(query, {});
+  const [addRoomMutation, { data, loading, error }] = useMutation(query);
 
   return {
     addRoomMutation,

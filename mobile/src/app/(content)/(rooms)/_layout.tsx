@@ -13,7 +13,14 @@ export default function Layout() {
         name="modal"
         options={{
           presentation: 'modal',
-          title: "ルーム作成"
+          title: 'ルーム作成',
+        }}
+      />
+      <Stack.Screen
+        name="searchModal"
+        options={{
+          presentation: 'modal',
+          title: '検索',
         }}
       />
     </Stack>

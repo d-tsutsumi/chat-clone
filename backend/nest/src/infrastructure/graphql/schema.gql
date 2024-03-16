@@ -3,44 +3,29 @@
 # ------------------------------------------------------
 
 """Organization"""
-type Organization {
+type SchemaOrganization {
   id: ID!
   name: String!
 }
 
-type Rooms {
+type SchemaRooms {
   id: ID!
   name: String!
   create_at: String!
-  organization: Organization!
+  organization: SchemaOrganization!
 }
 
-type UserRole {
+type SchemaUserRole {
   id: ID!
   name: String!
 }
 
-type User {
-  id: ID!
-  user_name: String!
-  join_at: DateTime!
-  push_flag: Boolean!
-  user_role: UserRole!
-  organization: Organization!
-  join_tables: [Rooms!]!
-}
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
 type Query {
-  room: Rooms
+  room: SchemaRooms
 }
 
 type Mutation {
-  addRoom(CreateRoomDto: CreateRoomDto!): Rooms!
+  addRoom(CreateRoomDto: CreateRoomDto!): SchemaRooms!
 }
 
 input CreateRoomDto {

@@ -9,14 +9,12 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Organization } from './organization.entity';
+import { Organization, SchemaOrganization } from './organization.entity';
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
-@ObjectType()
 @Entity()
 export class Rooms {
   @PrimaryGeneratedColumn('uuid', { comment: 'ルームid' })
-  @Field((type) => ID)
   id: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true, comment: 'ルーム名' })
@@ -24,11 +22,24 @@ export class Rooms {
   name: string;
 
   @CreateDateColumn({ type: 'date', comment: '作成日時' })
-  @Field((type) => String)
   create_at: Timestamp;
 
   @ManyToOne(() => Organization, (organization) => organization)
   @JoinColumn({ name: 'organization_id' })
-  @Field((type) => Organization)
+  organization: Organization;
+}
+
+@ObjectType()
+export class SchemaRooms {
+  @Field((type) => ID)
+  id: string;
+
+  @Field()
+  name: string;
+
+  @Field((type) => String)
+  create_at: Timestamp;
+
+  @Field((type) => SchemaOrganization)
   organization: Organization;
 }

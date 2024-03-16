@@ -1,22 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Rooms } from '@/entities/rooms.entity';
+import { Rooms, SchemaRooms } from '@/entities/rooms.entity';
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { CreateRoomDto } from './dto/createRoomDto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@/entities';
-import { Repository } from 'typeorm';
 import { RoomsService } from '@/service/rooms.service';
 import { UserService } from '@/service/users.service';
 import { isResultError } from '@/utils/Result';
 
-@Resolver((of) => Rooms)
+@Resolver((of) => SchemaRooms)
 export class RoomsResolver {
   constructor(
     private roomsService: RoomsService,
     private userService: UserService,
   ) {}
 
-  @Query(() => Rooms, { name: 'room', nullable: true })
+  @Query(() => SchemaRooms, { name: 'room', nullable: true })
   async getRoom() {
     const data = await this.roomsService.findByID(
       '1888262b-9740-4297-9497-2f84c7ed09cb',
@@ -27,7 +24,7 @@ export class RoomsResolver {
     return data.value;
   }
 
-  @Mutation((returns) => Rooms)
+  @Mutation((returns) => SchemaRooms)
   async addRoom(@Args('CreateRoomDto') createRoomDto: CreateRoomDto) {
     const { roomName, userId } = createRoomDto;
     const resultUser = await this.userService.findById(userId);

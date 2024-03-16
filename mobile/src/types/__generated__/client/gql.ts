@@ -15,6 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "query getRoomDetailInfo($roomId: uuid!) {\n  rooms_by_pk(id: $roomId) {\n    create_at\n    id\n    name\n  }\n  user_join_tables_rooms(where: {roomsId: {_eq: $roomId}}) {\n    user {\n      user_name\n      id\n    }\n  }\n  user_join_tables_rooms_aggregate(where: {roomsId: {_eq: $roomId}}) {\n    aggregate {\n      count\n    }\n  }\n}": types.GetRoomDetailInfoDocument,
     "query getRoomsByUserId($userId: uuid!) {\n  user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}": types.GetRoomsByUserIdDocument,
+    "mutation addRoomMutation($Input: CreateRoomDto!) {\n  addRoom(CreateRoomDto: $Input) {\n    create_at\n    id\n    name\n  }\n}": types.AddRoomMutationDocument,
 };
 
 /**
@@ -39,6 +40,10 @@ export function gql(source: "query getRoomDetailInfo($roomId: uuid!) {\n  rooms_
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "query getRoomsByUserId($userId: uuid!) {\n  user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}"): (typeof documents)["query getRoomsByUserId($userId: uuid!) {\n  user_join_tables_rooms(where: {userId: {_eq: $userId}}) {\n    room {\n      name\n      id\n    }\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "mutation addRoomMutation($Input: CreateRoomDto!) {\n  addRoom(CreateRoomDto: $Input) {\n    create_at\n    id\n    name\n  }\n}"): (typeof documents)["mutation addRoomMutation($Input: CreateRoomDto!) {\n  addRoom(CreateRoomDto: $Input) {\n    create_at\n    id\n    name\n  }\n}"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

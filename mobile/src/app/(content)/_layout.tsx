@@ -1,9 +1,8 @@
-import { Slot } from 'expo-router';
+import { Slot, Stack } from 'expo-router';
 import { View, StyleSheet } from 'react-native';
 import { Footer } from '@/template/footer';
 import { HeaderMenu } from '@/template/header';
-
-export default function testLayout() {
+export default function Layout() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -18,7 +17,6 @@ export default function testLayout() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -31,6 +29,7 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 10,
+    backgroundColor: 'white' 
   },
   footer: {
     flex: 1,

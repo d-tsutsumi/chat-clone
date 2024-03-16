@@ -1,0 +1,7 @@
+mutation addRoomMutation($Input: CreateRoomDto!) {
+  addRoom(CreateRoomDto: $Input) {
+    create_at
+    id
+    name
+  }
+}

@@ -50,18 +50,18 @@ export type Int_Comparison_Exp = {
 };
 
 /** Organization */
-export type Organization = {
-  __typename?: 'Organization';
+export type SchemaOrganization = {
+  __typename?: 'SchemaOrganization';
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
 };
 
-export type Rooms = {
-  __typename?: 'Rooms';
+export type SchemaRooms = {
+  __typename?: 'SchemaRooms';
   create_at: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
-  organization: Organization;
+  organization: SchemaOrganization;
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -513,7 +513,7 @@ export type Messages_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
-  addRoom: Rooms;
+  addRoom: SchemaRooms;
   /** delete data from the table: "messages" */
   delete_messages?: Maybe<Messages_Mutation_Response>;
   /** delete single row from the table: "messages" */
@@ -1123,7 +1123,7 @@ export type Query_Root = {
   organization_aggregate: Organization_Aggregate;
   /** fetch data from the table: "organization" using primary key columns */
   organization_by_pk?: Maybe<Organization>;
-  room?: Maybe<Rooms>;
+  room?: Maybe<SchemaRooms>;
   /** An array relationship */
   rooms: Array<Rooms>;
   /** An aggregate relationship */
@@ -2846,8 +2846,8 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Int_comparison_exp: Int_Comparison_Exp;
-  Organization: ResolverTypeWrapper<Organization>;
-  Rooms: ResolverTypeWrapper<Rooms>;
+  SchemaOrganization: ResolverTypeWrapper<SchemaOrganization>;
+  SchemaRooms: ResolverTypeWrapper<SchemaRooms>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   String_comparison_exp: String_Comparison_Exp;
   cursor_ordering: Cursor_Ordering;
@@ -3053,8 +3053,8 @@ export type ResolversParentTypes = {
   ID: Scalars['ID']['output'];
   Int: Scalars['Int']['output'];
   Int_comparison_exp: Int_Comparison_Exp;
-  Organization: Organization;
-  Rooms: Rooms;
+  SchemaOrganization: SchemaOrganization;
+  SchemaRooms: SchemaRooms;
   String: Scalars['String']['output'];
   String_comparison_exp: String_Comparison_Exp;
   date: Scalars['date']['output'];
@@ -3236,17 +3236,17 @@ export type CachedDirectiveArgs = {
 
 export type CachedDirectiveResolver<Result, Parent, ContextType = any, Args = CachedDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
-export type OrganizationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Organization'] = ResolversParentTypes['Organization']> = {
+export type SchemaOrganizationResolvers<ContextType = any, ParentType extends ResolversParentTypes['SchemaOrganization'] = ResolversParentTypes['SchemaOrganization']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type RoomsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Rooms'] = ResolversParentTypes['Rooms']> = {
+export type SchemaRoomsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SchemaRooms'] = ResolversParentTypes['SchemaRooms']> = {
   create_at?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  organization?: Resolver<ResolversTypes['Organization'], ParentType, ContextType>;
+  organization?: Resolver<ResolversTypes['SchemaOrganization'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -3351,7 +3351,7 @@ export type Messages_Variance_FieldsResolvers<ContextType = any, ParentType exte
 };
 
 export type Mutation_RootResolvers<ContextType = any, ParentType extends ResolversParentTypes['mutation_root'] = ResolversParentTypes['mutation_root']> = {
-  addRoom?: Resolver<ResolversTypes['Rooms'], ParentType, ContextType, RequireFields<Mutation_RootAddRoomArgs, 'CreateRoomDto'>>;
+  addRoom?: Resolver<ResolversTypes['SchemaRooms'], ParentType, ContextType, RequireFields<Mutation_RootAddRoomArgs, 'CreateRoomDto'>>;
   delete_messages?: Resolver<Maybe<ResolversTypes['messages_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_MessagesArgs, 'where'>>;
   delete_messages_by_pk?: Resolver<Maybe<ResolversTypes['messages']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Messages_By_PkArgs, 'id'>>;
   delete_organization?: Resolver<Maybe<ResolversTypes['organization_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_OrganizationArgs, 'where'>>;
@@ -3444,7 +3444,7 @@ export type Query_RootResolvers<ContextType = any, ParentType extends ResolversP
   organization?: Resolver<Array<ResolversTypes['organization']>, ParentType, ContextType, Partial<Query_RootOrganizationArgs>>;
   organization_aggregate?: Resolver<ResolversTypes['organization_aggregate'], ParentType, ContextType, Partial<Query_RootOrganization_AggregateArgs>>;
   organization_by_pk?: Resolver<Maybe<ResolversTypes['organization']>, ParentType, ContextType, RequireFields<Query_RootOrganization_By_PkArgs, 'id'>>;
-  room?: Resolver<Maybe<ResolversTypes['Rooms']>, ParentType, ContextType>;
+  room?: Resolver<Maybe<ResolversTypes['SchemaRooms']>, ParentType, ContextType>;
   rooms?: Resolver<Array<ResolversTypes['rooms']>, ParentType, ContextType, Partial<Query_RootRoomsArgs>>;
   rooms_aggregate?: Resolver<ResolversTypes['rooms_aggregate'], ParentType, ContextType, Partial<Query_RootRooms_AggregateArgs>>;
   rooms_by_pk?: Resolver<Maybe<ResolversTypes['rooms']>, ParentType, ContextType, RequireFields<Query_RootRooms_By_PkArgs, 'id'>>;
@@ -3766,8 +3766,8 @@ export interface UuidScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
 }
 
 export type Resolvers<ContextType = any> = {
-  Organization?: OrganizationResolvers<ContextType>;
-  Rooms?: RoomsResolvers<ContextType>;
+  SchemaOrganization?: SchemaOrganizationResolvers<ContextType>;
+  SchemaRooms?: SchemaRoomsResolvers<ContextType>;
   date?: GraphQLScalarType;
   messages?: MessagesResolvers<ContextType>;
   messages_aggregate?: Messages_AggregateResolvers<ContextType>;

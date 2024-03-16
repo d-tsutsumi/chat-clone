@@ -1,5 +1,5 @@
 import { RoomList } from '@/entities/room/ui';
 
-export default function Page() {
+export default function IndexPage() {
   return <RoomList />;
 }

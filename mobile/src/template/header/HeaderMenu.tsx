@@ -1,13 +1,22 @@
 import { Appbar } from 'react-native-paper';
 import { useHeaderName } from './lib/useHeaderName';
+import { useRouter } from 'expo-router';
+import { useNavigateAddButtonUrl } from './lib/useNavigateAddButtonUrl';
 
 export default function HeaderMenu() {
   const headerName = useHeaderName();
+  const navigateUrl = useNavigateAddButtonUrl();
+  const router = useRouter();
   return (
-    <Appbar style={{ justifyContent: 'space-around', height: 32, backgroundColor: "white" }}>
+    <Appbar style={{ justifyContent: 'space-around', height: 32, backgroundColor: 'white' }}>
       <Appbar.BackAction />
       <Appbar.Content title={headerName} />
-      <Appbar.Action icon="calendar" onPress={() => {}} />
+      <Appbar.Action
+        icon="plus"
+        onPress={() => {
+          router.push("/modal");
+        }}
+      />
       <Appbar.Action icon="magnify" onPress={() => {}} />
     </Appbar>
   );

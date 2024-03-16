@@ -57,5 +57,6 @@ services:
       - ./nest/:/home/node/app
     ports:
       - "3005:3000"
+    command: npm run start:dev
 volumes:
   db_data:

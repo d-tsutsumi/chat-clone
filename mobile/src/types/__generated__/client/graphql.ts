@@ -50,18 +50,18 @@ export type Int_Comparison_Exp = {
 };
 
 /** Organization */
-export type Organization = {
-  __typename?: 'Organization';
+export type SchemaOrganization = {
+  __typename?: 'SchemaOrganization';
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
 };
 
-export type Rooms = {
-  __typename?: 'Rooms';
+export type SchemaRooms = {
+  __typename?: 'SchemaRooms';
   create_at: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
-  organization: Organization;
+  organization: SchemaOrganization;
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -513,7 +513,7 @@ export type Messages_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
-  addRoom: Rooms;
+  addRoom: SchemaRooms;
   /** delete data from the table: "messages" */
   delete_messages?: Maybe<Messages_Mutation_Response>;
   /** delete single row from the table: "messages" */
@@ -1123,7 +1123,7 @@ export type Query_Root = {
   organization_aggregate: Organization_Aggregate;
   /** fetch data from the table: "organization" using primary key columns */
   organization_by_pk?: Maybe<Organization>;
-  room?: Maybe<Rooms>;
+  room?: Maybe<SchemaRooms>;
   /** An array relationship */
   rooms: Array<Rooms>;
   /** An aggregate relationship */
@@ -2782,6 +2782,14 @@ export type GetRoomsByUserIdQueryVariables = Exact<{
 
 export type GetRoomsByUserIdQuery = { __typename?: 'query_root', user_join_tables_rooms: Array<{ __typename?: 'user_join_tables_rooms', room: { __typename?: 'rooms', name?: string | null, id: string } }> };
 
+export type AddRoomMutationMutationVariables = Exact<{
+  Input: CreateRoomDto;
+}>;
+
+
+export type AddRoomMutationMutation = { __typename?: 'mutation_root', addRoom: { __typename?: 'SchemaRooms', create_at: string, id: string, name: string } };
+
 
 export const GetRoomDetailInfoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getRoomDetailInfo"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"roomId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"uuid"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"rooms_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roomId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"create_at"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user_join_tables_rooms"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"roomsId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roomId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"user_join_tables_rooms_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"roomsId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roomId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregate"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<GetRoomDetailInfoQuery, GetRoomDetailInfoQueryVariables>;
 export const GetRoomsByUserIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getRoomsByUserId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"uuid"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_join_tables_rooms"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"userId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"room"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetRoomsByUserIdQuery, GetRoomsByUserIdQueryVariables>;
+export const AddRoomMutationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"addRoomMutation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"Input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateRoomDto"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"addRoom"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"CreateRoomDto"},"value":{"kind":"Variable","name":{"kind":"Name","value":"Input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"create_at"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<AddRoomMutationMutation, AddRoomMutationMutationVariables>;

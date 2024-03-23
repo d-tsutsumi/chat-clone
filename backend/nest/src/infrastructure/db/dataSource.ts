@@ -10,7 +10,5 @@ const options: DataSourceOptions & SeederOptions = {
   entities: ['src/entities/*.ts'],
   migrations: ['src/migrations/*.ts'],
   seedTracking: false,
-  seeds: ['src/infrastructure/db/seeds/**/*{.js,.ts}'],
-  factories: ['src/infrastructure/db/factories/**/*{.js,.ts}'],
 };
 export default new DataSource(options);

@@ -21,7 +21,7 @@ export class Messages {
   @Column({ type: 'varchar', comment: 'メッセージ', nullable: true })
   message: string;
 
-  @CreateDateColumn({ type: 'date', comment: '作成日時' })
+  @CreateDateColumn({ comment: '作成日時' })
   create_at: Timestamp;
 
   @ManyToOne(() => User, (user) => user)

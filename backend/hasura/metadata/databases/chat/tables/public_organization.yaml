@@ -1,6 +1,6 @@
 table:
   name: organization
-  schema: tsutsumi_chat
+  schema: public
 array_relationships:
   - name: rooms
     using:
@@ -8,11 +8,11 @@ array_relationships:
         column: organization_id
         table:
           name: rooms
-          schema: tsutsumi_chat
+          schema: public
   - name: users
     using:
       foreign_key_constraint_on:
         column: organization_id
         table:
           name: user
-          schema: tsutsumi_chat
+          schema: public

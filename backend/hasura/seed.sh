@@ -1,9 +1,9 @@
 #!/bin/bash
 
 hasura seed create chat \
- --from-table tsutsumi_chat.organization \
- --from-table tsutsumi_chat.rooms \
- --from-table tsutsumi_chat.user \
- --from-table tsutsumi_chat.user \
- --from-table tsutsumi_chat.user_join_tables_rooms \
- --from-table tsutsumi_chat.user_role \
+ --from-table public.organization \
+ --from-table public.rooms \
+ --from-table public.user \
+ --from-table public.user \
+ --from-table public.user_join_tables_rooms \
+ --from-table public.user_role \

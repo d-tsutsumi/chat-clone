@@ -1,6 +1,6 @@
 table:
   name: messages
-  schema: tsutsumi_chat
+  schema: public
 object_relationships:
   - name: room
     using:

@@ -1,6 +1,6 @@
 table:
   name: user_join_tables_rooms
-  schema: tsutsumi_chat
+  schema: public
 object_relationships:
   - name: room
     using:

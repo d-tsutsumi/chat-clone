@@ -1,6 +1,6 @@
 table:
   name: user_role
-  schema: tsutsumi_chat
+  schema: public
 array_relationships:
   - name: users
     using:
@@ -8,4 +8,4 @@ array_relationships:
         column: role_id
         table:
           name: user
-          schema: tsutsumi_chat
+          schema: public
